@@ -5,7 +5,7 @@ const PORT = 2000; //Porta TCP do servidor HTTP da aplicação
 
 const app = express(); //Instância para o uso do Express
 
-const db = new sqlite3.Database("user.db"); // Instância para o uso do Sqlite3 e usa o arquivo
+const db = new sqlite3.Database("user.db"); // Instância para o uso do Sqlite3 e usa o arquivo 'user.db'
 db.serialize(() => {
   // Este método permite enviar comandos SQL em modo 'sequencial'
   db.run(
