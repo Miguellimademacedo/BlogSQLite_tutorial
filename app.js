@@ -15,6 +15,11 @@ db.serialize(() => {
 
 // Cria conexão com o banco de dados
 
+//_dirname é a variável interna
+app.use("/static", express.static(__dirname + "/static"));
+
+app.set("view engine", "ejs");
+
 const index =
   "<a href='/sobre'> Sobre </a><a href='/info'>Info </a><a href='/home'> Home </a><a href='/cadastro'> Cadastro </a><a href='/login'> Login </a>";
 const sobre = 'Vc está na página "Sobre"<br><a href="/">Voltar</a>';
@@ -29,7 +34,8 @@ const cadastro = 'Vc está na página "Cadastro"<br><a href="/">Voltar</a>';
 
 app.get("/", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:2000/
-  res.send(index);
+  // res.send(index);
+  res.render("index");
 });
 
 app.get("/sobre", (req, res) => {
@@ -49,11 +55,15 @@ app.get("/home", (req, res) => {
 
 app.get("/login", (req, res) => {
   //Rota raiz do meu servidor, acesse o browser com o enedereço http://localhost:2000/login
-  res.send(login);
+  res.render("login");
+});
+
+app.post("/login", (req, res) => {
+  res.send("Login ainda não implementado");
 });
 
 app.get("/cadastro", (req, res) => {
-  //Rota raiz do meu servidor, acesse o browser com o enedereço http://localhost:2000/cadastro
+  //Rota raiz do meu se"rvidor, acesse o browser com o enedereço http://localhost:2000/cadastro
   res.send(cadastro);
 });
 
